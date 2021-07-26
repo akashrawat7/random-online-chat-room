@@ -12,7 +12,7 @@ session_start();
         $match = mysqli_num_rows($sql);
         if($match==1){
         	
-        	$_SESSION["username"] = $name;
+        	$_SESSION["username"] = uniqid();
         	header('location:chat.php');
 
         }
