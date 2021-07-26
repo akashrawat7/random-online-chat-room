@@ -3,9 +3,9 @@
 		$name ="";
 		$email ="";
 	if (isset($_POST['submit'])){
-        $name = $_POST['fname'];
-		$email = $_POST['email'];
-		$pwd = $_POST['pass'];
+        $name = mysql_real_escape_string($_POST['fname']);
+	$email = mysql_real_escape_string($_POST['email']);
+	$pwd = mysql_real_escape_string($_POST['pass']);
      $match_0= "select * from login  WHERE name = '$name'";
      $match_1="select * from login  WHERE email = '$email'";
      $exe_0 = mysqli_query($con, $match_0) or die(mysqli_error($con));
