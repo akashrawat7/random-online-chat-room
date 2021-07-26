@@ -5,14 +5,14 @@ session_start();
  <?php
              
      if(isset($_POST["login"])){
-     	$name = $_POST["name"];
-     	$password = $_POST["password"]; 
+     	$name = mysql_real_escape_string($con, $_POST["name"]);
+     	$password = mysql_real_escape_string($con, $_POST["password"]); 
         $query = "select * from login where name = '$name' and pwd = '$password'";
         $sql = mysqli_query($con, $query) or die(mysqli_error($con));;
         $match = mysqli_num_rows($sql);
         if($match==1){
         	
-        	$_SESSION["username"] = $name;
+        	$_SESSION["username"] = uniqid();
         	header('location:chat.php');
 
         }
